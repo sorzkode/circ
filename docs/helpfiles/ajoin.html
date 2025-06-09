@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 CritiCAL IRC - Auto-join Module - Help Documentation</title>
+    <style>
+        /* Early 2000s styling */
+        body {
+            font-family: Verdana, Arial, sans-serif;
+            font-size: 11px;
+            background-color: #C0C0C0;
+            margin: 0;
+            padding: 0;
+            background-image: url('data:image/gif;base64,R0lGODlhBAAEAIAAAMzMzP///yH5BAAAAAAALAAAAAAEAAQAAAIESADpKAA7');
+        }
+
+        #container {
+            width: 800px;
+            margin: 10px auto;
+            background-color: #FFFFFF;
+            border: 2px solid #808080;
+            box-shadow: 2px 2px 0 #000000;
+        }
+
+        #header {
+            background: linear-gradient(to bottom, #0054E3 0%, #003299 100%);
+            color: #FFFFFF;
+            padding: 20px;
+            border-bottom: 3px solid #000080;
+        }
+
+        #header h1 {
+            margin: 0;
+            font-size: 24px;
+            text-shadow: 2px 2px 2px #000000;
+            font-family: "Times New Roman", serif;
+        }
+
+        #header .subtitle {
+            font-size: 14px;
+            margin-top: 5px;
+            color: #CCCCFF;
+        }
+
+        #nav {
+            background-color: #F0F0F0;
+            border-bottom: 1px solid #808080;
+            padding: 5px 10px;
+        }
+
+        #nav a {
+            color: #0000FF;
+            text-decoration: underline;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        #nav a:hover {
+            color: #FF0000;
+            background-color: #FFFF00;
+        }
+
+        #content {
+            padding: 20px;
+            line-height: 1.4;
+        }
+
+        h2 {
+            font-size: 16px;
+            color: #000080;
+            border-bottom: 2px solid #000080;
+            padding-bottom: 3px;
+            margin-top: 25px;
+        }
+
+        h3 {
+            font-size: 14px;
+            color: #800000;
+            margin-top: 15px;
+            background-color: #FFFFCC;
+            padding: 3px;
+            border: 1px solid #CCCC00;
+        }
+
+        .info-box {
+            background-color: #E0E0FF;
+            border: 1px solid #0000FF;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 10px;
+        }
+
+        .warning-box {
+            background-color: #FFE0E0;
+            border: 2px solid #FF0000;
+            padding: 10px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .code-box {
+            background-color: #000000;
+            color: #00FF00;
+            font-family: "Courier New", monospace;
+            padding: 10px;
+            border: 1px solid #808080;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #808080;
+        }
+
+        th {
+            background-color: #000080;
+            color: #FFFFFF;
+            padding: 5px;
+            text-align: left;
+        }
+
+        td {
+            padding: 5px;
+            background-color: #F0F0F0;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #E0E0E0;
+        }
+
+        .button-example {
+            display: inline-block;
+            background-color: #C0C0C0;
+            border: 2px solid;
+            border-color: #FFFFFF #808080 #808080 #FFFFFF;
+            padding: 2px 10px;
+            font-family: Tahoma, sans-serif;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .button-example:active {
+            border-color: #808080 #FFFFFF #FFFFFF #808080;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        .feature-list li {
+            list-style-type: none;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .feature-list li:before {
+            content: "►";
+            position: absolute;
+            left: 0;
+            color: #0000FF;
+        }
+
+        #footer {
+            background-color: #808080;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 10px;
+            border-top: 2px solid #000000;
+            font-size: 10px;
+        }
+
+        #footer a {
+            color: #FFFF00;
+        }
+
+        .video-container {
+            background-color: #000000;
+            border: 3px solid #808080;
+            padding: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .video-container video {
+            max-width: 100%;
+            border: 1px solid #FFFFFF;
+        }
+
+        .marquee {
+            background-color: #FFFF00;
+            padding: 5px;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .marquee span {
+            display: inline-block;
+            animation: scroll 20s linear infinite;
+        }
+
+        .new-badge {
+            background-color: #FF0000;
+            color: #FFFFFF;
+            font-size: 9px;
+            padding: 1px 4px;
+            font-weight: bold;
+            vertical-align: super;
+        }
+
+        .ascii-art {
+            font-family: monospace;
+            white-space: pre;
+            font-size: 10px;
+            color: #008000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>🎯 CritiCAL IRC - Auto-join Module Help</h1>
+            <div class="subtitle">Channel Management for mIRC</div>
+        </div>
+
+        <div id="nav">
+            <a href="#overview">Overview</a>
+            <a href="#installation">Installation</a>
+            <a href="#features">Features</a>
+            <a href="#usage">Usage</a>
+            <a href="#commands">Commands</a>
+            <a href="#faq">FAQ</a>
+            <a href="#demo">Demo Video</a>
+        </div>
+
+        <div class="marquee">
+            <span>★ Welcome to CritiCAL IRC Auto-join Module Help ★ Keeping mIRC alive in 2025 ★
+                Created by sorzkode ★</span>
+        </div>
+
+        <div id="content">
+
+            <h2 id="overview">Overview</h2>
+            <p>Welcome to the CritiCAL IRC Auto-join Module documentation! This script provides automatic
+                channel joining functionality for mIRC with a user-friendly graphical interface.</p>
+
+            <div class="info-box">
+                <strong>Script Information:</strong><br>
+                Version: 2.0.0<br>
+                Author: sorzkode<br>
+                License: MIT<br>
+                Repository: <a href="https://github.com/sorzkode/circ">https://github.com/sorzkode/circ</a>
+            </div>
+
+            <h2 id="installation">Installation</h2>
+            <ol>
+                <li>Download the <code>ajoin.mrc</code> file from the GitHub repository</li>
+                <li>Place it in your mIRC scripts directory (usually
+                    <code>C:\Users\[YourName]\AppData\Roaming\mIRC\scripts\</code>)</li>
+                <li>In mIRC, type: <span class="code-box">/load -rs scripts/ajoin.mrc</span></li>
+                <li>The script will automatically initialize and display a confirmation message</li>
+            </ol>
+
+            <h2 id="features">Features <span class="new-badge">NEW!</span></h2>
+            <ul class="feature-list">
+                <li>Automatic channel joining on connect</li>
+                <li>Support for password-protected channels</li>
+                <li>Configurable join delay to prevent flooding</li>
+                <li>Graphical user interface for easy management</li>
+                <li>Import/Export channel lists</li>
+                <li>Usage statistics tracking <span class="new-badge">NEW!</span></li>
+                <li>Cross-network support</li>
+                <li>Double-click removal of channels</li>
+                <li>Real-time input validation</li>
+            </ul>
+
+            <h2 id="usage">Usage Guide</h2>
+
+            <h3>Opening the Dialog</h3>
+            <p>To open the Auto-join configuration dialog, use one of these methods:</p>
+            <ul>
+                <li>Type <code>/ajoin</code> in any mIRC window</li>
+                <li>Right-click and navigate to: CritiCAL IRC → Auto-join → Open</li>
+                <li>Use the keyboard shortcut (if configured)</li>
+            </ul>
+
+            <h3>Adding Channels</h3>
+            <table>
+                <tr>
+                    <th>Step</th>
+                    <th>Action</th>
+                    <th>Notes</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Enter channel name</td>
+                    <td>With or without # prefix</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Enter key (optional)</td>
+                    <td>For password-protected channels</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Click <span class="button-example">➕ Add</span></td>
+                    <td>Channel appears in list</td>
+                </tr>
+            </table>
+
+            <div class="warning-box">
+                ⚠️ Important: Channel names and keys cannot contain spaces!
+            </div>
+
+            <h3>Managing Channels</h3>
+            <ul>
+                <li><strong>Remove Single:</strong> Select a channel and click <span class="button-example">🗑️ Remove
+                        Selected</span></li>
+                <li><strong>Remove by Double-Click:</strong> Double-click any channel in the list</li>
+                <li><strong>Clear All:</strong> Click <span class="button-example">🧹 Clear All</span> to remove all
+                    channels</li>
+            </ul>
+
+            <h2 id="commands">Commands Reference</h2>
+            <div class="code-box">
+                /ajoin - Open the Auto-join Module dialog<br>
+                /ajoin_help - Display help information<br>
+                /ajoin_stats - View script statistics<br>
+                /ajoin_reset_stats - Reset statistics<br>
+                /ajoin_view_vars - View script variables<br>
+                /ajoin_export - Export channels list<br>
+                /ajoin_import - Import channels list<br>
+                /ajoin_disable - Disable the Auto-join Module<br>
+                /ajoin_enable - Enable the Auto-join Module<br>
+                /ajoin_unload - Unload the script completely<br>
+            </div>
+
+            <h2 id="demo">Demo Video</h2>
+            <div class="video-container">
+                <video controls width="720">
+                    <source src="videos/ajoin_addremove.mp4" type="video/mp4">
+                    <p>Your browser does not support the video tag. Please download the demo video.</p>
+                </video>
+                <p style="color: #FFFFFF; margin-top: 10px;">Video demonstration of CritiCAL IRC Auto-join Module</p>
+                <p style="color: #FFFFFF; margin-top: 10px;">Screenshot after video...</p>
+                <img src="images/ajoin.png" style="max-width: 100%; height: auto; border: 1px solid #FFFFFF;">      </div>
+
+            <h2>Menu Options</h2>
+
+            <h3>File Menu</h3>
+            <ul>
+                <li><strong>Import List:</strong> Load channel list from a text file</li>
+                <li><strong>Export List:</strong> Save current channel list to a text file</li>
+                <li><strong>Exit:</strong> Close the dialog window</li>
+            </ul>
+
+            <h3>Tools Menu</h3>
+            <ul>
+                <li><strong>Reset Stats:</strong> Clear all usage statistics</li>
+            </ul>
+
+            <h3>View Menu</h3>
+            <ul>
+                <li><strong>Stats:</strong> Display usage statistics in @cIRC window</li>
+                <li><strong>Variables:</strong> Show all script variables and values</li>
+            </ul>
+
+            <h3>Help Menu</h3>
+            <ul>
+                <li><strong>About:</strong> Display script information</li>
+                <li><strong>Help:</strong> Show help information</li>
+                <li><strong>Website:</strong> Visit the GitHub repository</li>
+            </ul>
+
+            <h2 id="faq">Frequently Asked Questions</h2>
+
+            <h3>Q: Can I use different channel lists for different networks?</h3>
+            <p>A: Currently, the auto-join list is global and will be used across all networks. Network-specific lists
+                may be added in a future version.</p>
+
+            <h3>Q: What happens if I set the join delay to 0?</h3>
+            <p>A: Channels will be joined immediately upon connection. Be careful as this might trigger flood protection
+                on some networks.</p>
+
+            <h3>Q: How do I backup my channel list?</h3>
+            <p>A: Use File → Export List to save your channels to a text file. You can import this file later using File
+                → Import List.</p>
+
+            <h3>Q: Can I edit the channel list manually?</h3>
+            <p>A: Yes! Export the list, edit it in a text editor (one channel per line, format: #channel key), then
+                import it back.</p>
+
+            <div class="info-box">
+                <strong>Pro Tip:</strong> You can view all script variables using the <code>/ajoin_view_vars</code>
+                command or through View → Variables in the dialog menu!
+            </div>
+
+            <h2>Troubleshooting</h2>
+
+            <table>
+                <tr>
+                    <th>Problem</th>
+                    <th>Solution</th>
+                </tr>
+                <tr>
+                    <td>Script won't load</td>
+                    <td>Check file path and use full path: /load -rs C:\path\to\ajoin.mrc</td>
+                </tr>
+                <tr>
+                    <td>Channels not joining</td>
+                    <td>Ensure module is enabled (/ajoin_enable) and check join delay setting</td>
+                </tr>
+                <tr>
+                    <td>Dialog won't open</td>
+                    <td>Module might be disabled. Use /ajoin_enable first</td>
+                </tr>
+                <tr>
+                    <td>Import fails</td>
+                    <td>Check file format: one channel per line, optional key separated by space</td>
+                </tr>
+            </table>
+
+            <h2>Version History</h2>
+            <ul>
+                <li><strong>v2.0</strong> - Added modern interace, error handling, statistics tracking, variable viewer, and import / export functionality</li>
+                <li><strong>v1.0</strong> - Initial release (~2005) with basic auto-join functionality:</li>
+            </ul>
+            <div style="text-align: center;">
+                <img src="images/og_ajoin.png" style="max-width: 100%; height: auto; border: 1px solid #FFFFFF;">      </div>
+
+        <div id="footer">
+            CritiCAL IRC Auto-join Module © 2025 sorzkode |
+            <a href="https://github.com/sorzkode/circ">GitHub Repository</a> |
+            Best viewed in Internet Explorer 6.0 at 800x600 resolution
+        </div>
+    </div>
+</body>
+
+</html>
